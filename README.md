@@ -1,4 +1,4 @@
-This is a quick and very dirty port of the [Redux Todomvc](https://github.com/reactjs/redux/tree/master/examples/todomvc), 
+This is a quick and **very dirty** port of the [Redux Todomvc](https://github.com/reactjs/redux/tree/master/examples/todomvc), 
 which uses [nx-observe](https://github.com/nx-js/observer-util) library.
 
 # Installation:
