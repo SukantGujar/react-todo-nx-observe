@@ -19,7 +19,7 @@ class MainSection extends Component {
   state = { filter: SHOW_ALL }
 
   handleClearCompleted = () => {
-    this.props.actions.clearCompleted()
+    //this.props.actions.clearCompleted()
   }
 
   handleShow = filter => {
@@ -27,7 +27,7 @@ class MainSection extends Component {
   }
 
   renderToggleAll(completedCount) {
-    const { todos, actions } = this.props
+    const { todos } = this.props
     if (todos.length > 0) {
       return (
         <input className="toggle-all"
@@ -54,25 +54,31 @@ class MainSection extends Component {
     }
   }
 
-  editTodo(todo, id, text){
+  editTodo(todo, text){
     todo.text = text;
   }
 
-  completeTodo(todo, id){
+  completeTodo(todo){
     todo.completed = true;
+  }
+
+  deleteTodo(todo){
+    let {todos} = this.props, 
+    deletionCandidate = todos.indexOf(todo);
+    todos.splice(deletionCandidate, 1);
   }
 
   mapTodoItemStateToProps(todo){
     return ({
       todo, 
-      editTodo:this.editTodo.bind(this, todo), 
-      deleteTodo:()=>null, 
-      completeTodo:this.completeTodo.bind(this, todo)
+      editTodo:this.editTodo.bind(this), 
+      deleteTodo:this.deleteTodo.bind(this), 
+      completeTodo:this.completeTodo.bind(this)
     });
   }
 
   render() {
-    const { todos, actions } = this.props
+    const { todos } = this.props
     const { filter } = this.state
 
     const filteredTodos = todos.filter(TODO_FILTERS[filter])
@@ -86,7 +92,7 @@ class MainSection extends Component {
         {this.renderToggleAll(completedCount)}
         <ul className="todo-list">
           {filteredTodos.map(todo =>
-            <TodoItem key={todo.id} mapStateToProps={this.mapTodoItemStateToProps.bind(this)} state={todo} {...actions} />
+            <TodoItem key={todo.id} mapStateToProps={this.mapTodoItemStateToProps.bind(this)} state={todo}/>
           )}
         </ul>
         {this.renderFooter(completedCount)}
