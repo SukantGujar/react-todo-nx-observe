@@ -12,14 +12,19 @@ const TODO_FILTERS = {
 
 class MainSection extends Component {
   static propTypes = {
-    todos: PropTypes.array.isRequired,
-    //actions: PropTypes.object.isRequired
+    todos: PropTypes.array.isRequired
   }
 
   state = { filter: SHOW_ALL }
 
   handleClearCompleted = () => {
-    //this.props.actions.clearCompleted()
+    let {todos} = this.props,
+    completedTodo;
+    do {
+      completedTodo = todos.find((todo)=>todo.completed);
+      this.deleteTodo(completedTodo);
+    }
+    while(completedTodo)
   }
 
   handleShow = filter => {
