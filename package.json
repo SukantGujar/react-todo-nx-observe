@@ -1,0 +1,28 @@
+{
+  "name": "react-todo-nx-observe",
+  "version": "0.1.0",
+  "description": "Example TODO App using React and nx-observe",
+  "main": "index.js",
+  "repository": "https://github.com/SukantGujar/react-todo-nx-observe",
+  "devDependencies": {
+    "react-scripts": "0.8.4"
+  },
+  "dependencies": {
+    "@risingstack/nx-observe": "^3.0.0",
+    "classnames": "^2.2.5",
+    "lodash.assign": "^4.2.0",
+    "lodash.set": "^4.3.2",
+    "ramda": "^0.23.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "todomvc-app-css": "^2.0.6"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "author": "Sukant Gujar",
+  "license": "MIT"
+}
